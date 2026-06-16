@@ -40,6 +40,6 @@ public class ProductSQL {
     }
     
     public void addProduct(){
-       
+       String sql ="sel";
     }
 }
