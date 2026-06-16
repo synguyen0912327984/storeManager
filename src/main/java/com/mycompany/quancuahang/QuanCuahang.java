@@ -32,7 +32,7 @@ public class QuanCuahang {
         ProductSQL l2 = new ProductSQL();
         
         try(Connection conn = ds.getConnection()){
-           l2.findcus(conn, 3).Process();
+           l2.addProduct(conn);
         
         } catch (SQLServerException ex) {
             ex.printStackTrace();
