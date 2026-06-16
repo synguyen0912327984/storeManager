@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.math.BigDecimal;
+import java.util.Scanner;
 /**
  *
  * @author syn74
@@ -39,7 +39,33 @@ public class ProductSQL {
         return null;
     }
     
-    public void addProduct(){
-       String sql ="sel";
+    public void addProduct(Connection conn){
+       Scanner sc = new Scanner(System.in);
+       String sql ="ínert into san_pham(id,ten,id_ct,gia_tri,so_luong) values(?,?,?,?,?)";
+       String takeid = "select max(id) from san_pham";
+       int id = 0;
+       
+       // lay id
+       
+       try(PreparedStatement ps = conn.prepareStatement(takeid)){
+           ResultSet rs = ps.executeQuery();
+           if(rs.next()){
+               id = rs.getInt(1) +1;
+           }else{
+               System.out.println("error 1");
+               return;
+           }
+               
+       } catch (SQLException ex) {
+            System.getLogger(ProductSQL.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+       
+       // nhap du lieu san pham moi 
+       
+       System.out.print("ten sp: ");
+       String name = sc.nextLine();
+       
+       
+       
     }
 }
